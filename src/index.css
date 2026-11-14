@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 250 60% 99%;
+    --foreground: 235 42% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 235 42% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 235 42% 15%;
+    --primary: 249 71% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 89% 62%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 249 44% 96%;
+    --muted-foreground: 240 14% 47%;
+    --accent: 44 96% 62%;
+    --accent-foreground: 235 42% 15%;
+    --destructive: 358 72% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 246 36% 92%;
+    --input: 246 36% 90%;
+    --ring: 249 71% 57%;
+    --success: 152 55% 40%;
+    --success-foreground: 0 0% 100%;
+    --radius: 1rem;
+    --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  .dark {
+    --background: 246 40% 7%;
+    --foreground: 250 40% 96%;
+    --card: 246 34% 11%;
+    --card-foreground: 250 40% 96%;
+    --popover: 246 34% 11%;
+    --popover-foreground: 250 40% 96%;
+    --primary: 249 82% 69%;
+    --primary-foreground: 246 40% 8%;
+    --secondary: 222 90% 68%;
+    --secondary-foreground: 246 40% 8%;
+    --muted: 246 28% 17%;
+    --muted-foreground: 248 16% 68%;
+    --accent: 44 92% 60%;
+    --accent-foreground: 30 45% 12%;
+    --destructive: 358 76% 66%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 246 24% 21%;
+    --input: 246 24% 24%;
+    --ring: 249 82% 69%;
+    --success: 152 52% 50%;
+    --success-foreground: 246 40% 8%;
+  }
+
+  .dark .lc-stage {
+    background: #0c0a1c;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.18);
+  }
+}
+
+/* ---------- LearnCode app frame ---------- */
+.lc-stage {
+  background:
+    radial-gradient(46% 34% at 12% 0%, rgba(99, 102, 241, 0.22) 0%, rgba(99, 102, 241, 0) 70%),
+    radial-gradient(42% 30% at 96% 8%, rgba(250, 204, 21, 0.22) 0%, rgba(250, 204, 21, 0) 70%),
+    radial-gradient(50% 40% at 50% 100%, rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0) 72%),
+    #f4f2ff;
+}
+
+/* ---------- signature indigo panel (dashboard overview) ---------- */
+.lc-panel {
+  --lc-ink: #eeebfb;
+  --lc-muted: #a79ed3;
+  --lc-hair: rgba(238, 235, 251, 0.17);
+  position: relative;
+  isolation: isolate;
+  color: var(--lc-ink);
+  border-radius: 34px;
+  background-color: #1b1440;
+  background-image:
+    radial-gradient(34% 62% at 34% 112%, #f7b23b 0%, #f59e1b 16%, rgba(245, 158, 27, 0.34) 48%, rgba(245, 158, 27, 0) 78%),
+    radial-gradient(26% 54% at 92% 116%, #f472b6 0%, rgba(244, 114, 182, 0.38) 42%, rgba(244, 114, 182, 0) 76%),
+    radial-gradient(24% 50% at 2% 116%, #fb923c 0%, rgba(251, 146, 60, 0.3) 44%, rgba(251, 146, 60, 0) 76%),
+    radial-gradient(30% 56% at 24% 58%, rgba(79, 70, 229, 0.55) 0%, rgba(79, 70, 229, 0) 70%),
+    radial-gradient(72% 42% at 50% -10%, rgba(129, 140, 248, 0.5) 0%, rgba(129, 140, 248, 0) 74%),
+    linear-gradient(180deg, #2a1f63 0%, #1b1440 46%, #17112f 100%);
+  background-repeat: no-repeat;
+}
+
+.lc-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 34px;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0.2126 0.7152 0.0722 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='gamma' exponent='3' amplitude='1' offset='0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 190px 190px;
+}
+
+.lc-panel > * {
+  position: relative;
+  z-index: 3;
+}
+
+.lc-glass {
+  background: rgba(12, 10, 32, 0.42);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1.5px solid var(--lc-ink);
+}
+
+@keyframes lc-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.lc-bar {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: lc-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes lc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lc-rise {
+  animation: lc-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes lc-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.lc-float {
+  animation: lc-float 6s ease-in-out infinite;
+}
+
+@keyframes lc-pop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lc-pop {
+  animation: lc-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lc-bar,
+  .lc-rise,
+  .lc-float,
+  .lc-pop {
+    animation: none !important;
+  }
+}
+
+.lc-scroll-x {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.lc-scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* code blocks */
+.lc-code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.75;
+  tab-size: 2;
+}
